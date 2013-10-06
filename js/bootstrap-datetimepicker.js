@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
  * bootstrap-datetimepicker.js
  * =========================================================
  * Copyright 2012 Stefan Petre
@@ -154,7 +154,9 @@
 		if (this.isRTL){
 			this.picker.addClass('datetimepicker-rtl');
 			this.picker.find('.prev i, .next i')
-						.toggleClass('icon-arrow-left icon-arrow-right');
+						//BS2.x: .toggleClass('icon-arrow-left icon-arrow-right');
+            //BS3:
+            .toggleClass('glyphicon glyphicon-chevron-left glyphicon glyphicon-chevron-right');
 		}
 		$(document).on('mousedown', function (e) {
 			// Clicked outside the datetimepicker, hide it
@@ -426,7 +428,13 @@
 			this.picker.css({
 				top: top,
 				left: left,
-				zIndex: zIndex
+				zIndex: zIndex,
+        //added BS3
+        opacity: 1,
+        width: 'auto',
+        display: 'inline-block',
+        visibility: 'visible'
+        //end BS3                                                
 			});
 		},
 
@@ -1516,7 +1524,15 @@
 
 			return viewMode;
 		},
-		headTemplate: '<thead>'+
+		/*BS2.x: headTemplate: '<thead>'+
+							'<tr>'+
+								'<th class="prev"><i class="glyphicon glyphicon-chevron-left"/></th>'+
+								'<th colspan="5" class="switch"></th>'+
+								'<th class="next"><i class="glyphicon glyphicon-chevron-right"/></th>'+
+							'</tr>'+
+						'</thead>',*/
+    //BS3:
+		headTemplate: headTemplate: '<thead>'+
 							'<tr>'+
 								'<th class="prev"><i class="icon-arrow-left"/></th>'+
 								'<th colspan="5" class="switch"></th>'+
